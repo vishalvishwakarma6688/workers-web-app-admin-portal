@@ -22,6 +22,8 @@
   --border-color: #334155;
   --border-subtle: #1e293b;
   --text-main: #f8fafc;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
   --text-muted: #94a3b8;
   --text-subtle: #64748b;
   --sidebar-bg: #0f172a;
@@ -51,6 +53,8 @@
   --border-color: #e2e8f0;
   --border-subtle: #f1f5f9;
   --text-main: #0f172a;
+  --text-primary: #0f172a;
+  --text-secondary: #64748b;
   --text-muted: #64748b;
   --text-subtle: #94a3b8;
   --sidebar-bg: #ffffff;

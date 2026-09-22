@@ -7,8 +7,8 @@ import { useTheme } from '../../context/ThemeContext';
 import './Login.css';
 
 export const Login: React.FC = () => {
-  const [email, setEmail] = useState('admin@serviceapp.com');
-  const [password, setPassword] = useState('admin123');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -66,7 +66,7 @@ export const Login: React.FC = () => {
                   id="email"
                   type="email"
                   required
-                  placeholder="admin@serviceapp.com"
+                  placeholder="Enter your email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
@@ -81,7 +81,7 @@ export const Login: React.FC = () => {
                   id="password"
                   type="password"
                   required
-                  placeholder="••••••••"
+                  placeholder="Enter your password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />

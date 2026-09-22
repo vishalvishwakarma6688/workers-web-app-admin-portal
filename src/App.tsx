@@ -6,6 +6,7 @@ import { Login } from './pages/Login/Login';
 import { Dashboard } from './pages/Dashboard/Dashboard';
 import { Workers } from './pages/Workers/Workers';
 import { Customers } from './pages/Customers/Customers';
+import { Categories } from './pages/Categories/Categories';
 import { Jobs } from './pages/Jobs/Jobs';
 import { SettingsPage } from './pages/Settings/Settings';
 import './styles/theme.css';
@@ -23,6 +24,7 @@ export function App() {
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="workers" element={<Workers />} />
               <Route path="customers" element={<Customers />} />
+              <Route path="categories" element={<Categories />} />
               <Route path="jobs" element={<Jobs />} />
               <Route path="settings" element={<SettingsPage />} />
             </Route>

@@ -116,15 +116,18 @@
 }
 
 .input-icon {
-  position: absolute;
-  left: 12px;
+  position: absolute; 
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
   color: var(--text-muted);
   pointer-events: none;
+  z-index: 2;
 }
 
 .input-wrapper input {
   width: 100%;
-  padding: 10px 12px 10px 36px;
+  padding: 12px 14px 12px 42px;
   background-color: var(--bg-input);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);

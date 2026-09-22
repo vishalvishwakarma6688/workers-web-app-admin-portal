@@ -29,6 +29,22 @@ export interface DashboardMetricsResponse {
   }>;
 }
 
+export interface ServiceCategoryAdminDTO {
+  id: string;
+  name: string;
+  slug: string;
+  description?: string;
+  iconUrl?: string;
+  isActive: boolean;
+  sortOrder: number;
+  createdAt: string;
+  updatedAt: string;
+  _count?: {
+    workerServices: number;
+    jobs: number;
+  };
+}
+
 export interface WorkerAdminDTO {
   id: string;
   name: string;
@@ -46,6 +62,7 @@ export interface WorkerAdminDTO {
     verificationStatus: 'PENDING_VERIFICATION' | 'APPROVED' | 'REJECTED' | 'SUSPENDED';
     averageRating: number;
     totalJobs: number;
+    idProofUrl?: string;
     workerServices: Array<{
       serviceCategory: { id: string; name: string; slug: string };
     }>;
@@ -146,6 +163,28 @@ export const adminApi = {
 
   getJobById: async (jobId: string): Promise<JobAdminDTO> => {
     const res = await apiClient.get(`/admin/jobs/${jobId}`);
+    return res.data.data;
+  },
+
+  getCategories: async (includeInactive: boolean = true): Promise<ServiceCategoryAdminDTO[]> => {
+    const res = await apiClient.get('/categories', {
+      params: { includeInactive },
+    });
+    return res.data.data;
+  },
+
+  createCategory: async (data: { name: string; description?: string; iconUrl?: string; sortOrder?: number }) => {
+    const res = await apiClient.post('/categories', data);
+    return res.data.data;
+  },
+
+  updateCategory: async (id: string, data: Partial<{ name: string; description: string; iconUrl: string; sortOrder: number; isActive: boolean }>) => {
+    const res = await apiClient.patch(`/categories/${id}`, data);
+    return res.data.data;
+  },
+
+  deleteCategory: async (id: string) => {
+    const res = await apiClient.delete(`/categories/${id}`);
     return res.data.data;
   },
 

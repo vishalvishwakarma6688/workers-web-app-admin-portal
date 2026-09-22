@@ -495,3 +495,195 @@
   color: #ffffff;
   font-weight: 600;
 }
+
+/* ID Proof Table Thumbnail & Badge */
+.id-proof-thumb-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--color-primary-light);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  padding: 4px 8px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.id-proof-thumb-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.id-proof-thumb-img {
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.id-proof-thumb-label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.id-proof-missing-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  background-color: var(--bg-surface-hover);
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+}
+
+/* ID Proof Details Card */
+.id-proof-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.badge-id-verified {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #10b981;
+  background-color: var(--status-approved-bg);
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+.id-proof-preview-card {
+  margin-top: 6px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-surface);
+}
+
+.id-proof-image-wrapper {
+  position: relative;
+  cursor: pointer;
+  max-height: 200px;
+  overflow: hidden;
+}
+
+.id-proof-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.id-proof-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.65);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.id-proof-image-wrapper:hover .id-proof-overlay {
+  opacity: 1;
+}
+
+.id-proof-actions-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background-color: var(--bg-surface-hover);
+  border-top: 1px solid var(--border-color);
+  gap: 8px;
+}
+
+.btn-id-inspect {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  background: var(--color-primary-light);
+  padding: 5px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-primary);
+}
+
+.btn-id-external {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.btn-id-external:hover {
+  color: var(--color-primary);
+}
+
+.id-proof-empty-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  background-color: var(--bg-surface-hover);
+  border-radius: var(--radius-md);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-top: 4px;
+}
+
+/* ID Inspection Modal */
+.modal-card.id-inspection-card {
+  max-width: 720px;
+}
+
+.id-inspection-body {
+  padding: 16px;
+  background-color: #090d16;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 65vh;
+  overflow: auto;
+}
+
+.id-full-preview-image {
+  max-width: 100%;
+  max-height: 60vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+.id-inspection-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.id-inspection-decisions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}

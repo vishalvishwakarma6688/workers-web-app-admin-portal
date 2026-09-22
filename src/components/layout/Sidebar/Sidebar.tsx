@@ -5,6 +5,7 @@ import {
   UserCheck,
   Users,
   Briefcase,
+  Grid,
   Settings,
   LogOut,
   Wrench,
@@ -30,6 +31,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ pendingApprovalsCount = 0 }) =
       badge: pendingApprovalsCount > 0 ? pendingApprovalsCount : undefined,
     },
     { path: '/customers', label: 'Customers', icon: Users },
+    { path: '/categories', label: 'Service Domains', icon: Grid },
     { path: '/jobs', label: 'Jobs & Inspection', icon: Briefcase },
     { path: '/settings', label: 'Settings & Logs', icon: Settings },
   ];
