@@ -60,3 +60,9 @@
   font-size: 0.8rem;
   font-weight: 600;
 }
+
+@media (max-width: 768px) {
+  .customers-page {
+    gap: 16px;
+  }
+}

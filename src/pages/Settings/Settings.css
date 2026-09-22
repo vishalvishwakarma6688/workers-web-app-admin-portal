@@ -92,3 +92,24 @@
   border-radius: var(--radius-md);
   font-size: 0.85rem;
 }
+
+@media (max-width: 768px) {
+  .settings-card {
+    padding: 16px;
+  }
+
+  .setting-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .setting-input-wrapper {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .setting-input-wrapper input {
+    width: 110px;
+  }
+}

@@ -10,6 +10,7 @@ export const AdminLayout: React.FC = () => {
   const { isAuthenticated, isLoading } = useAuth();
   const location = useLocation();
   const [pendingApprovalsCount, setPendingApprovalsCount] = useState(0);
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
   const getPageTitle = (path: string) => {
     switch (path) {
@@ -45,6 +46,11 @@ export const AdminLayout: React.FC = () => {
     }
   }, [isAuthenticated, location.pathname]);
 
+  // Close mobile sidebar on navigation
+  useEffect(() => {
+    setIsMobileSidebarOpen(false);
+  }, [location.pathname]);
+
   if (isLoading) {
     return (
       <div className="layout-loading">
@@ -60,9 +66,23 @@ export const AdminLayout: React.FC = () => {
 
   return (
     <div className="admin-layout-container">
-      <Sidebar pendingApprovalsCount={pendingApprovalsCount} />
+      {/* Semi-transparent dark overlay for mobile drawer */}
+      <div
+        className={`sidebar-backdrop ${isMobileSidebarOpen ? 'active' : ''}`}
+        onClick={() => setIsMobileSidebarOpen(false)}
+      />
+
+      <Sidebar
+        pendingApprovalsCount={pendingApprovalsCount}
+        isOpen={isMobileSidebarOpen}
+        onClose={() => setIsMobileSidebarOpen(false)}
+      />
       <div className="admin-main-wrapper">
-        <Header title={getPageTitle(location.pathname)} pendingApprovalsCount={pendingApprovalsCount} />
+        <Header
+          title={getPageTitle(location.pathname)}
+          pendingApprovalsCount={pendingApprovalsCount}
+          onToggleMobileSidebar={() => setIsMobileSidebarOpen((prev) => !prev)}
+        />
         <main className="admin-content">
           <Outlet context={{ refreshPendingCount: fetchPendingCount }} />
         </main>

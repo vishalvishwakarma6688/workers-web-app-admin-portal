@@ -184,3 +184,110 @@ a {
   letter-spacing: 0.02em;
   display: inline-block;
 }
+
+/* Global Mobile Responsive Table Transformations */
+@media (max-width: 768px) {
+  .table-card {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .table-responsive {
+    overflow-x: visible !important;
+  }
+
+  .admin-table {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  .admin-table thead {
+    display: none !important;
+  }
+
+  .admin-table tbody {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 14px !important;
+    width: 100% !important;
+  }
+
+  .admin-table tr {
+    display: flex !important;
+    flex-direction: column !important;
+    background-color: var(--bg-surface) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: var(--radius-lg) !important;
+    padding: 16px !important;
+    gap: 12px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    box-shadow: var(--shadow-sm) !important;
+  }
+
+  .admin-table td {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 0 !important;
+    border: none !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    font-size: 0.88rem !important;
+  }
+
+  .admin-table td[data-label]::before {
+    content: attr(data-label);
+    font-weight: 600;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    flex-shrink: 0;
+    margin-right: 12px;
+  }
+
+  .admin-table td:first-child {
+    border-bottom: 1px solid var(--border-subtle) !important;
+    padding-bottom: 12px !important;
+    margin-bottom: 2px !important;
+  }
+
+  .admin-table td:first-child::before {
+    display: none !important;
+  }
+
+  .admin-table td.actions-cell {
+    border-top: 1px solid var(--border-subtle) !important;
+    padding-top: 12px !important;
+    margin-top: 4px !important;
+    justify-content: flex-end !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+
+  .admin-table td.actions-cell::before {
+    display: none !important;
+  }
+
+  /* Scrollable tabs bar clean touch scroll */
+  .tab-buttons {
+    display: flex !important;
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+  }
+
+  .tab-buttons::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .tab-btn {
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
+  }
+}

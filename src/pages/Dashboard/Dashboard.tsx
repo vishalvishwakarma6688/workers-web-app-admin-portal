@@ -208,16 +208,16 @@ export const Dashboard: React.FC = () => {
                 ) : (
                   recentJobs.map((job) => (
                     <tr key={job.id}>
-                      <td><span className="code-tag">{job.jobCode}</span></td>
-                      <td>{job.category?.name || 'Service'}</td>
-                      <td>{job.customer?.name || 'Unknown'}</td>
-                      <td>{job.worker?.name || <span className="text-muted">Unassigned</span>}</td>
-                      <td>
+                      <td data-label="Job Code"><span className="code-tag">{job.jobCode}</span></td>
+                      <td data-label="Category">{job.category?.name || 'Service'}</td>
+                      <td data-label="Customer">{job.customer?.name || 'Unknown'}</td>
+                      <td data-label="Technician">{job.worker?.name || <span className="text-muted">Unassigned</span>}</td>
+                      <td data-label="Status">
                         <span className={`status-badge status-${job.status.toLowerCase()}`}>
                           {job.status}
                         </span>
                       </td>
-                      <td className="font-semibold">₹{job.finalAmount || 0}</td>
+                      <td data-label="Amount" className="font-semibold">₹{job.finalAmount || 0}</td>
                     </tr>
                   ))
                 )}

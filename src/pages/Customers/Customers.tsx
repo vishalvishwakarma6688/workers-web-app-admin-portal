@@ -128,7 +128,7 @@ export const Customers: React.FC = () => {
               <tbody>
                 {filteredCustomers.map((c) => (
                   <tr key={c.id}>
-                    <td>
+                    <td data-label="Customer">
                       <div className="customer-info-cell">
                         <div className="customer-avatar">
                           {c.name.charAt(0).toUpperCase()}
@@ -139,24 +139,24 @@ export const Customers: React.FC = () => {
                         </div>
                       </div>
                     </td>
-                    <td>
+                    <td data-label="Contact">
                       <div className="contact-cell">
                         <div><Phone size={13} /> {c.phone}</div>
                         <div className="text-muted"><Mail size={13} /> {c.email}</div>
                       </div>
                     </td>
-                    <td>
+                    <td data-label="Joined Date">
                       <div className="date-cell">
                         <Calendar size={13} />
                         <span>{new Date(c.createdAt).toLocaleDateString()}</span>
                       </div>
                     </td>
-                    <td>
+                    <td data-label="Total Jobs">
                       <span className="job-count-badge">
                         {c._count?.customerJobs || 0} Jobs
                       </span>
                     </td>
-                    <td>
+                    <td data-label="Status">
                       <span className={`account-status-chip status-${c.status.toLowerCase()}`}>
                         {c.status}
                       </span>

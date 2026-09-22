@@ -122,22 +122,22 @@ export const Jobs: React.FC = () => {
               <tbody>
                 {filteredJobs.map((j) => (
                   <tr key={j.id}>
-                    <td>
+                    <td data-label="Job Code">
                       <span className="code-tag">{j.jobCode}</span>
                     </td>
-                    <td>
+                    <td data-label="Category">
                       <div className="category-cell">
                         <Wrench size={14} className="cat-icon" />
                         <span>{j.category.name}</span>
                       </div>
                     </td>
-                    <td>
+                    <td data-label="Customer">
                       <div className="person-cell">
                         <User size={13} />
                         <span>{j.customer.name}</span>
                       </div>
                     </td>
-                    <td>
+                    <td data-label="Technician">
                       {j.worker ? (
                         <div className="person-cell worker">
                           <Wrench size={13} />
@@ -147,18 +147,18 @@ export const Jobs: React.FC = () => {
                         <span className="unassigned-text">Unassigned</span>
                       )}
                     </td>
-                    <td>
+                    <td data-label="Scheduled">
                       <div className="date-cell">
                         <Calendar size={13} />
                         <span>{new Date(j.scheduledAt).toLocaleDateString()}</span>
                       </div>
                     </td>
-                    <td>
+                    <td data-label="Status">
                       <span className={`status-badge status-${j.status.toLowerCase()}`}>
                         {j.status}
                       </span>
                     </td>
-                    <td className="font-semibold">
+                    <td data-label="Amount" className="font-semibold">
                       ₹{j.finalAmount || j.budgetMax || j.budgetMin || 0}
                     </td>
                     <td className="actions-cell">

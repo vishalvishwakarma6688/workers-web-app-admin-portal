@@ -208,7 +208,7 @@ export const Workers: React.FC = () => {
 
                   return (
                     <tr key={w.id}>
-                      <td>
+                      <td data-label="Technician">
                         <div className="worker-info-cell">
                           <div className="worker-avatar">
                             {w.name.charAt(0).toUpperCase()}
@@ -221,13 +221,13 @@ export const Workers: React.FC = () => {
                           </div>
                         </div>
                       </td>
-                      <td>
+                      <td data-label="Contact">
                         <div className="contact-cell">
                           <div><Phone size={13} /> {w.phone}</div>
                           <div className="text-muted"><Mail size={13} /> {w.email}</div>
                         </div>
                       </td>
-                      <td>
+                      <td data-label="Services">
                         <div className="services-cell">
                           <div className="tags-row">
                             {services.slice(0, 2).map((s, idx) => (
@@ -244,7 +244,7 @@ export const Workers: React.FC = () => {
                           </div>
                         </div>
                       </td>
-                      <td>
+                      <td data-label="ID Proof">
                         {idProofUrl ? (
                           <button
                             className="id-proof-thumb-btn"
@@ -262,12 +262,12 @@ export const Workers: React.FC = () => {
                           </span>
                         )}
                       </td>
-                      <td>
+                      <td data-label="Approval">
                         <span className={`status-chip status-${verStatus.toLowerCase()}`}>
                           {verStatus === 'PENDING_VERIFICATION' ? 'PENDING' : verStatus}
                         </span>
                       </td>
-                      <td>
+                      <td data-label="Account">
                         <span className={`account-status-chip status-${w.status.toLowerCase()}`}>
                           {w.status}
                         </span>

@@ -9,6 +9,7 @@ import {
   Settings,
   LogOut,
   Wrench,
+  X,
 } from 'lucide-react';
 import { useAuth } from '../../../context/AuthContext';
 import { SignOutModal } from '../../common/SignOutModal/SignOutModal';
@@ -16,9 +17,15 @@ import './Sidebar.css';
 
 interface SidebarProps {
   pendingApprovalsCount?: number;
+  isOpen?: boolean;
+  onClose?: () => void;
 }
 
-export const Sidebar: React.FC<SidebarProps> = ({ pendingApprovalsCount = 0 }) => {
+export const Sidebar: React.FC<SidebarProps> = ({
+  pendingApprovalsCount = 0,
+  isOpen = false,
+  onClose,
+}) => {
   const { logout, user } = useAuth();
   const [showSignOutModal, setShowSignOutModal] = useState(false);
 
@@ -38,7 +45,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ pendingApprovalsCount = 0 }) =
 
   return (
     <>
-      <aside className="admin-sidebar">
+      <aside className={`admin-sidebar ${isOpen ? 'mobile-open' : ''}`}>
         <div className="sidebar-brand">
           <div className="brand-icon-wrapper">
             <Wrench className="brand-icon" size={24} />
@@ -47,6 +54,14 @@ export const Sidebar: React.FC<SidebarProps> = ({ pendingApprovalsCount = 0 }) =
             <span className="brand-name">Technician</span>
             <span className="brand-tag">ADMIN PANEL</span>
           </div>
+          <button
+            className="sidebar-close-btn"
+            onClick={onClose}
+            title="Close Menu"
+            aria-label="Close navigation menu"
+          >
+            <X size={20} />
+          </button>
         </div>
 
         <nav className="sidebar-nav">
@@ -57,6 +72,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ pendingApprovalsCount = 0 }) =
               <NavLink
                 key={item.path}
                 to={item.path}
+                onClick={onClose}
                 className={({ isActive }) =>
                   `nav-item ${isActive ? 'active' : ''}`
                 }
@@ -92,7 +108,10 @@ export const Sidebar: React.FC<SidebarProps> = ({ pendingApprovalsCount = 0 }) =
       <SignOutModal
         isOpen={showSignOutModal}
         onClose={() => setShowSignOutModal(false)}
-        onConfirm={logout}
+        onConfirm={() => {
+          onClose?.();
+          logout();
+        }}
       />
     </>
   );

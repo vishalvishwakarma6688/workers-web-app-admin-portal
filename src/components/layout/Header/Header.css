@@ -111,3 +111,75 @@
   font-weight: 600;
   color: var(--text-main);
 }
+.mobile-hamburger-btn {
+  display: none;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-surface);
+  color: var(--text-main);
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+
+.mobile-hamburger-btn:hover {
+  background-color: var(--bg-surface-hover);
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+@media (max-width: 768px) {
+  .mobile-hamburger-btn {
+    display: flex;
+  }
+
+  .admin-header {
+    padding: 0 16px;
+    height: 64px;
+  }
+
+  .header-left {
+    gap: 10px;
+    min-width: 0;
+    flex: 1;
+  }
+
+  .page-title {
+    font-size: 1.05rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .header-right {
+    gap: 10px;
+    flex-shrink: 0;
+  }
+
+  .pending-chip-text {
+    display: none;
+  }
+
+  .pending-alert-chip {
+    padding: 8px;
+    border-radius: var(--radius-full);
+  }
+
+  .header-divider {
+    display: none;
+  }
+
+  .user-display-name {
+    display: none;
+  }
+
+  .admin-user-badge {
+    padding: 3px;
+    border: none;
+    background: transparent;
+  }
+}

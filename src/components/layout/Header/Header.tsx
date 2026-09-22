@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sun, Moon, UserCheck } from 'lucide-react';
+import { Sun, Moon, UserCheck, Menu } from 'lucide-react';
 import { useTheme } from '../../../context/ThemeContext';
 import { useAuth } from '../../../context/AuthContext';
 import './Header.css';
@@ -7,15 +7,28 @@ import './Header.css';
 interface HeaderProps {
   title?: string;
   pendingApprovalsCount?: number;
+  onToggleMobileSidebar?: () => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ title = 'Dashboard Overview', pendingApprovalsCount = 0 }) => {
+export const Header: React.FC<HeaderProps> = ({
+  title = 'Dashboard Overview',
+  pendingApprovalsCount = 0,
+  onToggleMobileSidebar,
+}) => {
   const { theme, toggleTheme } = useTheme();
   const { user } = useAuth();
 
   return (
     <header className="admin-header">
       <div className="header-left">
+        <button
+          className="mobile-hamburger-btn"
+          onClick={onToggleMobileSidebar}
+          title="Open Menu"
+          aria-label="Toggle navigation menu"
+        >
+          <Menu size={22} />
+        </button>
         <h1 className="page-title">{title}</h1>
       </div>
 
@@ -23,7 +36,9 @@ export const Header: React.FC<HeaderProps> = ({ title = 'Dashboard Overview', pe
         {pendingApprovalsCount > 0 && (
           <div className="pending-alert-chip" title="Pending Worker Approvals">
             <UserCheck size={16} />
-            <span>{pendingApprovalsCount} Approval{pendingApprovalsCount > 1 ? 's' : ''} Needed</span>
+            <span className="pending-chip-text">
+              {pendingApprovalsCount} Approval{pendingApprovalsCount > 1 ? 's' : ''} Needed
+            </span>
           </div>
         )}
 
