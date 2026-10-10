@@ -202,4 +202,13 @@ export const adminApi = {
     const res = await apiClient.get('/admin/audit-logs');
     return res.data.data;
   },
+
+  resetDatabase: async (data: { confirm?: string; resetSecret?: string; preserveAdmins?: boolean }) => {
+    const headers: Record<string, string> = {};
+    if (data.resetSecret) {
+      headers['x-reset-secret'] = data.resetSecret;
+    }
+    const res = await apiClient.post('/admin/reset-database', data, { headers });
+    return res.data.data;
+  },
 };
