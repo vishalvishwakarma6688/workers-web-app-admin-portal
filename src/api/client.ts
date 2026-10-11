@@ -1,11 +1,11 @@
 import axios from 'axios';
 
-const LIVE_BACKEND_URL = 'https://workers-mobile-app-backend.onrender.com/api/v1';
+const LOCAL_BACKEND_URL = 'http://localhost:5000/api/v1';
 
 const API_BASE_URL =
   import.meta.env.VITE_API_URL ||
   import.meta.env.VITE_API_BASE_URL ||
-  LIVE_BACKEND_URL;
+  LOCAL_BACKEND_URL;
 
 export const apiClient = axios.create({
   baseURL: API_BASE_URL,
