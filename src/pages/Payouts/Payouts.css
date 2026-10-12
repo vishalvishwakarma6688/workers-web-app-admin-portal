@@ -27,28 +27,57 @@
 }
 
 .payout-stat-card.total-card {
-  background: linear-gradient(135deg, var(--bg-surface) 0%, #f0fdf4 100%);
-  border-color: #bbf7d0;
+  border-color: rgba(16, 185, 129, 0.45);
+  background: linear-gradient(180deg, var(--bg-surface) 0%, rgba(16, 185, 129, 0.08) 100%);
+  box-shadow: 0 4px 20px -2px rgba(16, 185, 129, 0.12);
+}
+
+.stat-icon-wrapper {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .stat-icon-wrapper.total-disbursed {
-  background-color: #dcfce7;
-  color: #16a34a;
+  background-color: rgba(16, 185, 129, 0.15);
+  color: #10b981;
 }
 
 .stat-icon-wrapper.total-count {
-  background-color: var(--bg-surface-hover);
-  color: var(--color-primary);
+  background-color: rgba(37, 99, 235, 0.15);
+  color: #3b82f6;
 }
 
 .stat-icon-wrapper.upi-count {
-  background-color: #e0e7ff;
-  color: #4f46e5;
+  background-color: rgba(99, 102, 241, 0.15);
+  color: #818cf8;
 }
 
 .stat-icon-wrapper.bank-count {
-  background-color: #e0f2fe;
-  color: #0284c7;
+  background-color: rgba(14, 165, 233, 0.15);
+  color: #38bdf8;
+}
+
+.stat-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: -0.02em;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 500;
 }
 
 .worker-subtitle {
@@ -66,7 +95,7 @@
 .payout-amount {
   font-size: 0.95rem;
   font-weight: 800;
-  color: #16a34a;
+  color: #10b981;
 }
 
 .payout-method-badge {
@@ -79,15 +108,15 @@
 }
 
 .payout-method-badge.method-upi {
-  background-color: #e0e7ff;
-  color: #4338ca;
-  border: 1px solid #c7d2fe;
+  background-color: rgba(99, 102, 241, 0.15);
+  color: #818cf8;
+  border: 1px solid rgba(99, 102, 241, 0.3);
 }
 
 .payout-method-badge.method-bank_transfer {
-  background-color: #e0f2fe;
-  color: #0369a1;
-  border: 1px solid #bae6fd;
+  background-color: rgba(14, 165, 233, 0.15);
+  color: #38bdf8;
+  border: 1px solid rgba(14, 165, 233, 0.3);
 }
 
 .destination-upi {
