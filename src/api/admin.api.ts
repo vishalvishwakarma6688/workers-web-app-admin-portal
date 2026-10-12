@@ -100,15 +100,82 @@ export interface JobAdminDTO {
   paymentStatus: string;
   createdAt: string;
   completedAt?: string;
+  extraCharges?: number;
+  extraChargeReason?: string;
+  extraChargeStatus?: string;
   category: { id: string; name: string };
   address: { title: string; street: string; city: string; state: string; postalCode: string };
   customer: { id: string; name: string; phone: string; email: string; profileImageUrl?: string };
   worker?: { id: string; name: string; phone: string; email: string; profileImageUrl?: string };
   jobImages?: Array<{ id: string; imageUrl: string; imageType: string }>;
   statusHistory?: Array<{ id: string; fromStatus?: string; toStatus: string; changedBy: string; note?: string; createdAt: string }>;
+  disputes?: Array<{
+    id: string;
+    raisedById: string;
+    reason: string;
+    description: string;
+    status: string;
+    resolution?: string;
+    adminNotes?: string;
+    createdAt: string;
+  }>;
+}
+
+export interface DisputeAdminDTO {
+  id: string;
+  jobId: string;
+  raisedById: string;
+  reason: string;
+  description: string;
+  status: 'DISPUTED' | 'RESOLVED' | 'REJECTED' | string;
+  resolution?: string;
+  adminNotes?: string;
+  createdAt: string;
+  updatedAt: string;
+  job: {
+    jobCode: string;
+    status: string;
+    finalAmount?: number;
+    customerId: string;
+    workerId?: string;
+  };
+  raisedBy: {
+    name: string;
+    role: string;
+    email: string;
+    phone: string;
+  };
+}
+
+export interface PayoutAdminDTO {
+  id: string;
+  workerId: string;
+  amount: number;
+  payoutMethod: 'UPI' | 'BANK_TRANSFER' | string;
+  upiId?: string;
+  bankAccountNumber?: string;
+  bankIfsc?: string;
+  accountHolderName?: string;
+  status: 'PENDING' | 'PROCESSED' | 'REJECTED' | string;
+  referenceId?: string;
+  adminNote?: string;
+  processedAt?: string;
+  createdAt: string;
+  updatedAt: string;
+  worker: {
+    id: string;
+    name: string;
+    email: string;
+    phone: string;
+    workerProfile?: {
+      businessName?: string;
+      startingPrice?: number;
+    };
+  };
 }
 
 export const adminApi = {
+
   login: async (email: string, password: string) => {
     const res = await apiClient.post('/admin/auth/login', { email, password });
     return res.data.data;
@@ -211,4 +278,28 @@ export const adminApi = {
     const res = await apiClient.post('/admin/reset-database', data, { headers });
     return res.data.data;
   },
+
+  getDisputes: async (): Promise<DisputeAdminDTO[]> => {
+    const res = await apiClient.get('/admin/disputes');
+    return res.data.data;
+  },
+
+  resolveDispute: async (
+    disputeId: string,
+    data: { status: 'RESOLVED' | 'REJECTED'; resolution: string; adminNotes?: string }
+  ) => {
+    const res = await apiClient.patch(`/admin/disputes/${disputeId}`, data);
+    return res.data.data;
+  },
+
+  getPayouts: async (): Promise<PayoutAdminDTO[]> => {
+    const res = await apiClient.get('/admin/payouts');
+    return res.data.data;
+  },
+
+  getJobInvoice: async (jobId: string) => {
+    const res = await apiClient.get(`/jobs/${jobId}/invoice`);
+    return res.data.data;
+  },
 };
+

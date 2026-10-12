@@ -9,11 +9,14 @@ import {
   Image as ImageIcon,
   X,
   FileText,
+  ShieldAlert,
+  Receipt,
 } from 'lucide-react';
 import { adminApi, type JobAdminDTO } from '../../api/admin.api';
 import './Jobs.css';
 
-type JobStatusFilter = 'ALL' | 'REQUESTED' | 'ACCEPTED' | 'IN_PROGRESS' | 'COMPLETED' | 'CANCELLED';
+type JobStatusFilter = 'ALL' | 'REQUESTED' | 'ACCEPTED' | 'ON_THE_WAY' | 'IN_PROGRESS' | 'COMPLETED' | 'PAID' | 'DISPUTED' | 'CANCELLED';
+
 
 export const Jobs: React.FC = () => {
   const [jobs, setJobs] = useState<JobAdminDTO[]>([]);
@@ -68,14 +71,14 @@ export const Jobs: React.FC = () => {
       {error && <div className="login-error-alert">{error}</div>}
       <div className="page-header-card">
         <div className="tab-buttons scrollable">
-          {(['ALL', 'REQUESTED', 'ACCEPTED', 'IN_PROGRESS', 'COMPLETED', 'CANCELLED'] as JobStatusFilter[]).map(
+          {(['ALL', 'REQUESTED', 'ACCEPTED', 'ON_THE_WAY', 'IN_PROGRESS', 'COMPLETED', 'PAID', 'DISPUTED', 'CANCELLED'] as JobStatusFilter[]).map(
             (status) => (
               <button
                 key={status}
                 className={`tab-btn ${statusFilter === status ? 'active' : ''}`}
                 onClick={() => setStatusFilter(status)}
               >
-                <span>{status === 'ALL' ? 'All Orders' : status.replace('_', ' ')}</span>
+                <span>{status === 'ALL' ? 'All Orders' : status.replace(/_/g, ' ')}</span>
               </button>
             )
           )}
@@ -202,6 +205,56 @@ export const Jobs: React.FC = () => {
                   Payment: {selectedJob.paymentStatus}
                 </span>
               </div>
+
+              {/* Dispute Alert in Job Modal */}
+              {(selectedJob.status === 'DISPUTED' || (selectedJob.disputes && selectedJob.disputes.length > 0)) && (
+                <div className="job-modal-dispute-alert">
+                  <div className="dispute-alert-header">
+                    <ShieldAlert size={18} className="text-danger" />
+                    <strong>Job Under Dispute Investigation</strong>
+                    <span className="code-tag">{selectedJob.disputes?.[0]?.status || 'DISPUTED'}</span>
+                  </div>
+                  <div className="dispute-alert-content">
+                    <p><strong>Reason:</strong> "{selectedJob.disputes?.[0]?.reason || 'Issue reported on job'}"</p>
+                    {selectedJob.disputes?.[0]?.description && (
+                      <p className="text-muted">"{selectedJob.disputes[0].description}"</p>
+                    )}
+                    {selectedJob.disputes?.[0]?.resolution && (
+                      <div className="dispute-resolution-badge">
+                        <strong>Official Resolution:</strong> {selectedJob.disputes[0].resolution}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+
+              {/* Tax Invoice & Warranty Summary for Completed/Paid Jobs */}
+              {(selectedJob.status === 'COMPLETED' || selectedJob.status === 'PAID' || selectedJob.paymentStatus === 'SUCCESS') && (
+                <div className="job-modal-invoice-card">
+                  <div className="invoice-header-row">
+                    <Receipt size={18} style={{ color: 'var(--color-primary)' }} />
+                    <strong>Official Tax Invoice INV-{selectedJob.jobCode}</strong>
+                    <span className="warranty-pill">🛡️ 30-Day Guarantee Active</span>
+                  </div>
+                  <div className="invoice-breakdown-row">
+                    <div className="invoice-item">
+                      <span className="text-xs text-muted">Final Amount Paid:</span>
+                      <strong className="text-success text-base">₹{selectedJob.finalAmount || 0}</strong>
+                    </div>
+                    {selectedJob.extraCharges && selectedJob.extraChargeStatus === 'APPROVED' ? (
+                      <div className="invoice-item">
+                        <span className="text-xs text-muted">Approved Extra Parts:</span>
+                        <strong>₹{(selectedJob.extraCharges / 100).toFixed(0)} ({selectedJob.extraChargeReason})</strong>
+                      </div>
+                    ) : null}
+                    <div className="invoice-item">
+                      <span className="text-xs text-muted">Warranty Duration:</span>
+                      <span>30 Days (Free re-inspection & defect coverage)</span>
+                    </div>
+                  </div>
+                </div>
+              )}
+
 
               {selectedJob.jobImages && selectedJob.jobImages.length > 0 && (
                 <div className="proof-photos-section">

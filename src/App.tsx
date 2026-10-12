@@ -8,6 +8,8 @@ import { Workers } from './pages/Workers/Workers';
 import { Customers } from './pages/Customers/Customers';
 import { Categories } from './pages/Categories/Categories';
 import { Jobs } from './pages/Jobs/Jobs';
+import { Disputes } from './pages/Disputes/Disputes';
+import { Payouts } from './pages/Payouts/Payouts';
 import { SettingsPage } from './pages/Settings/Settings';
 import './styles/theme.css';
 
@@ -26,6 +28,8 @@ export function App() {
               <Route path="customers" element={<Customers />} />
               <Route path="categories" element={<Categories />} />
               <Route path="jobs" element={<Jobs />} />
+              <Route path="disputes" element={<Disputes />} />
+              <Route path="payouts" element={<Payouts />} />
               <Route path="settings" element={<SettingsPage />} />
             </Route>
 

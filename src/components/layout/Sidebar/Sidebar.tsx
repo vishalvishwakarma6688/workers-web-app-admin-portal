@@ -10,6 +10,8 @@ import {
   LogOut,
   Wrench,
   X,
+  ShieldAlert,
+  Wallet,
 } from 'lucide-react';
 import { useAuth } from '../../../context/AuthContext';
 import { SignOutModal } from '../../common/SignOutModal/SignOutModal';
@@ -40,8 +42,11 @@ export const Sidebar: React.FC<SidebarProps> = ({
     { path: '/customers', label: 'Customers', icon: Users },
     { path: '/categories', label: 'Service Domains', icon: Grid },
     { path: '/jobs', label: 'Jobs & Inspection', icon: Briefcase },
+    { path: '/disputes', label: 'Disputes & Mediation', icon: ShieldAlert },
+    { path: '/payouts', label: 'Payouts & Wallet', icon: Wallet },
     { path: '/settings', label: 'Settings & Logs', icon: Settings },
   ];
+
 
   return (
     <>

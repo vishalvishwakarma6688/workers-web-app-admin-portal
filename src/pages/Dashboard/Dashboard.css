@@ -241,6 +241,22 @@
   color: var(--status-active-text);
 }
 
+.status-badge.status-on_the_way {
+  background-color: #e0f2fe;
+  color: #0369a1;
+}
+
+.status-badge.status-disputed {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+.status-badge.status-resolved {
+  background-color: #dcfce7;
+  color: #15803d;
+}
+
+
 .empty-table-cell {
   text-align: center;
   padding: 32px !important;

@@ -22,6 +22,10 @@ export const AdminLayout: React.FC = () => {
         return 'Customer Accounts';
       case '/jobs':
         return 'Job Orders & Inspection';
+      case '/disputes':
+        return 'Dispute Tickets & Mediation';
+      case '/payouts':
+        return 'Technician Payouts & Wallet';
       case '/settings':
         return 'System Settings & Audit Logs';
       default:

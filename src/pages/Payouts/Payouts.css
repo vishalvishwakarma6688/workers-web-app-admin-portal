@@ -1,0 +1,113 @@
+.payouts-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.payouts-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.payout-stat-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition);
+}
+
+.payout-stat-card:hover {
+  transform: translateY(-2px);
+}
+
+.payout-stat-card.total-card {
+  background: linear-gradient(135deg, var(--bg-surface) 0%, #f0fdf4 100%);
+  border-color: #bbf7d0;
+}
+
+.stat-icon-wrapper.total-disbursed {
+  background-color: #dcfce7;
+  color: #16a34a;
+}
+
+.stat-icon-wrapper.total-count {
+  background-color: var(--bg-surface-hover);
+  color: var(--color-primary);
+}
+
+.stat-icon-wrapper.upi-count {
+  background-color: #e0e7ff;
+  color: #4f46e5;
+}
+
+.stat-icon-wrapper.bank-count {
+  background-color: #e0f2fe;
+  color: #0284c7;
+}
+
+.worker-subtitle {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  display: block;
+}
+
+.amount-cell {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.payout-amount {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #16a34a;
+}
+
+.payout-method-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+}
+
+.payout-method-badge.method-upi {
+  background-color: #e0e7ff;
+  color: #4338ca;
+  border: 1px solid #c7d2fe;
+}
+
+.payout-method-badge.method-bank_transfer {
+  background-color: #e0f2fe;
+  color: #0369a1;
+  border: 1px solid #bae6fd;
+}
+
+.destination-upi {
+  display: flex;
+  align-items: center;
+}
+
+.destination-bank {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.bank-meta {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.utr-tag {
+  font-size: 0.78rem;
+  color: var(--text-main);
+  background-color: var(--bg-surface-hover);
+}
