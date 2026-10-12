@@ -4,7 +4,6 @@ import {
   Search,
   CreditCard,
   Building,
-  CheckCircle,
   Clock,
   User,
   ArrowUpRight,
