@@ -2,7 +2,8 @@
   position: fixed;
   inset: 0;
   background-color: var(--modal-overlay);
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -19,21 +20,23 @@
 .signout-modal-card {
   position: relative;
   width: 100%;
-  max-width: 380px;
+  max-width: 400px;
   background-color: var(--bg-surface);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   border: 1px solid var(--border-color);
-  border-radius: var(--radius-lg);
-  padding: 28px 24px 24px;
-  box-shadow: var(--shadow-lg);
+  border-radius: var(--radius-xl);
+  padding: 32px 26px 26px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6), 0 0 24px -6px rgba(239, 68, 68, 0.15);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  animation: scaleUp 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: scaleUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @keyframes scaleUp {
-  from { transform: scale(0.95); opacity: 0; }
+  from { transform: scale(0.92); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
 }
 
@@ -42,44 +45,49 @@
   top: 14px;
   right: 14px;
   color: var(--text-muted);
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: var(--transition);
+  border: 1px solid transparent;
 }
 
 .signout-close-btn:hover {
   background-color: var(--bg-surface-hover);
   color: var(--text-main);
+  border-color: var(--border-color);
 }
 
 .signout-icon-wrapper {
-  width: 56px;
-  height: 56px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
-  background-color: var(--status-rejected-bg);
-  color: var(--status-rejected-text);
+  background: radial-gradient(circle at center, rgba(239, 68, 68, 0.2) 0%, rgba(239, 68, 68, 0.05) 100%);
+  color: #ef4444;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 16px;
-  border: 1px solid var(--status-rejected-text);
+  margin-bottom: 18px;
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  box-shadow: 0 0 20px -4px rgba(239, 68, 68, 0.25);
 }
 
 .signout-modal-card h3 {
-  font-size: 1.2rem;
+  font-family: var(--font-display);
+  font-size: 1.28rem;
   font-weight: 700;
+  letter-spacing: -0.01em;
   color: var(--text-main);
   margin-bottom: 8px;
 }
 
 .signout-modal-card p {
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   color: var(--text-muted);
-  line-height: 1.45;
+  line-height: 1.5;
   margin-bottom: 24px;
 }
 
@@ -92,7 +100,7 @@
 
 .btn-signout-cancel {
   flex: 1;
-  padding: 11px;
+  padding: 11px 16px;
   border-radius: var(--radius-md);
   border: 1px solid var(--border-color);
   background-color: var(--bg-surface);
@@ -100,25 +108,30 @@
   font-weight: 600;
   font-size: 0.9rem;
   transition: var(--transition);
+  cursor: pointer;
 }
 
 .btn-signout-cancel:hover {
   background-color: var(--bg-surface-hover);
+  border-color: var(--border-hover);
 }
 
 .btn-signout-confirm {
   flex: 1;
-  padding: 11px;
+  padding: 11px 16px;
   border-radius: var(--radius-md);
-  background-color: #ef4444;
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
   color: #ffffff;
   font-weight: 600;
   font-size: 0.9rem;
   transition: var(--transition);
-  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.25);
+  box-shadow: 0 4px 14px rgba(239, 68, 68, 0.35);
+  border: none;
+  cursor: pointer;
 }
 
 .btn-signout-confirm:hover {
-  background-color: #dc2626;
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+  box-shadow: 0 6px 18px rgba(239, 68, 68, 0.45);
   transform: translateY(-1px);
 }

@@ -1,7 +1,8 @@
 .admin-header {
-  height: 70px;
+  height: 72px;
   background-color: var(--header-bg);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border-color);
   display: flex;
   align-items: center;
@@ -20,10 +21,10 @@
 }
 
 .page-title {
-  font-size: 1.35rem;
-  font-weight: 700;
+  font-size: 1.45rem;
+  font-weight: 800;
   color: var(--text-main);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
 }
 
 .header-right {
@@ -35,19 +36,21 @@
 .pending-alert-chip {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   background-color: var(--status-pending-bg);
   color: var(--status-pending-text);
-  padding: 6px 14px;
+  border: 1px solid var(--status-pending-border);
+  padding: 7px 16px;
   border-radius: var(--radius-full);
   font-size: 0.82rem;
-  font-weight: 600;
-  animation: pulse-amber 2s infinite ease-in-out;
+  font-weight: 700;
+  box-shadow: 0 0 16px rgba(245, 158, 11, 0.15);
+  animation: pulse-amber 2.5s infinite ease-in-out;
 }
 
 @keyframes pulse-amber {
   0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.85; transform: scale(1.02); }
+  50% { opacity: 0.9; transform: scale(1.02); }
 }
 
 .theme-toggle-btn {
@@ -56,6 +59,8 @@
   border-radius: var(--radius-md);
   border: 1px solid var(--border-color);
   background-color: var(--bg-surface);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   color: var(--text-main);
   display: flex;
   align-items: center;
@@ -67,6 +72,7 @@
   background-color: var(--bg-surface-hover);
   border-color: var(--color-primary);
   color: var(--color-primary);
+  box-shadow: 0 0 16px var(--color-primary-glow);
 }
 
 .icon-sun {
@@ -74,7 +80,7 @@
 }
 
 .icon-moon {
-  color: #6366f1;
+  color: #38bdf8;
 }
 
 .header-divider {
@@ -87,23 +93,27 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 4px 10px 4px 4px;
+  padding: 4px 12px 4px 4px;
   border-radius: var(--radius-full);
   background-color: var(--bg-surface);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
 }
 
 .avatar-circle {
   width: 32px;
   height: 32px;
   border-radius: var(--radius-full);
-  background-color: var(--color-primary);
+  background: var(--color-gradient-accent);
   color: #ffffff;
   font-weight: 700;
   font-size: 0.85rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 2px 8px rgba(14, 165, 233, 0.35);
 }
 
 .user-display-name {
@@ -111,6 +121,7 @@
   font-weight: 600;
   color: var(--text-main);
 }
+
 .mobile-hamburger-btn {
   display: none;
   width: 40px;
@@ -149,7 +160,7 @@
   }
 
   .page-title {
-    font-size: 1.05rem;
+    font-size: 1.15rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

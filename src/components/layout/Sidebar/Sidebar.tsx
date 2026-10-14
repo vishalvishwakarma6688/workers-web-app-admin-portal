@@ -56,9 +56,12 @@ export const Sidebar: React.FC<SidebarProps> = ({
             <Wrench className="brand-icon" size={24} />
           </div>
           <div className="brand-text">
-            <span className="brand-name">Technician</span>
-            <span className="brand-tag">ADMIN PANEL</span>
+            <span className="brand-name">
+              FixIt <span className="brand-highlight">Pro</span>
+            </span>
+            <span className="brand-tag">ADMIN PORTAL</span>
           </div>
+
           <button
             className="sidebar-close-btn"
             onClick={onClose}

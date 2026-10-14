@@ -49,11 +49,15 @@ export const Login: React.FC = () => {
         <div className="login-card">
           <div className="login-header">
             <div className="login-logo-circle">
-              <ShieldCheck size={24} />
+              <ShieldCheck size={26} />
             </div>
-            <h2>Admin Sign In</h2>
-            <p>Access the control center to manage workers, approvals, customers & jobs</p>
+            <h2>
+              FixIt <span className="brand-highlight">Pro</span>
+            </h2>
+            <div className="login-subtitle-badge">ADMIN CONTROL CENTER</div>
+            <p>Sign in to manage verified technicians, bookings, disputes & operations</p>
           </div>
+
 
           {error && <div className="login-error-alert">{error}</div>}
 
